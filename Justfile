@@ -6,6 +6,10 @@ export TYPST_ROOT := root
 default:
   @just --list --unsorted
 
+alias b := build
+build:
+  cargo build --release --target wasm32-unknown-unknown --target-dir target/
+
 # generate manual
 doc:
   typst compile docs/manual.typ docs/manual.pdf

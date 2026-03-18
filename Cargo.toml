@@ -3,5 +3,16 @@ name = "typst-godsays-core"
 version = "0.1.0"
 edition = "2024"
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
 godsays = "0.1.5"
+wasm-minimal-protocol = "0.1"
+
+[profile.release]
+lto = true
+strip = true
+opt-level = 'z'
+codegen-units = 1
+panic = 'abort'
