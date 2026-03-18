@@ -10,20 +10,6 @@ alias b := build
 build:
   cargo build --release --target wasm32-unknown-unknown --target-dir target/
 
-# generate manual
-doc:
-  typst compile docs/manual.typ docs/manual.pdf
-  typst compile docs/thumbnail.typ thumbnail-light.svg
-  typst compile --input theme=dark docs/thumbnail.typ thumbnail-dark.svg
-
-# run test suite
-test *args:
-  tt run --no-fail-fast {{ args }}
-
-# update test cases
-update *args:
-  tt update {{ args }}
-
 # package the library into the specified destination folder
 package target:
   ./scripts/package "{{target}}"
